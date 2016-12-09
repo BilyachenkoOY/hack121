@@ -1,0 +1,17 @@
+﻿<!-- left, vertical navbar -->
+
+<ul class="nav navbar-collapse collapse bootstrap-admin-navbar-side">
+    @Html.MenuRouteItem("0", "student/list")
+    @Html.MenuItem("1", "List", "Team", null, area: "Admin")
+    @Html.MenuRouteItem("2", "teacher/list")
+    @Html.MenuRouteItem("3", "group/list")
+    @Html.MenuRouteItem("4", "question/list")
+    <li><hr /></li>
+    @Html.MenuRouteItem("5", "questionAT/list")
+    @*@Html.MenuItem("Statistics (Charts)", "Index", "Statistics")
+        @Html.MenuItem("Forms", "Index", "Forms")
+        @Html.MenuItem("Tables", "Index", "Tables")
+        @Html.MenuItem("Buttons &amp; Icons", "Index", "Buttons")
+        @Html.MenuItem(" WYSIWYG Editors", "Index", "Editors")
+        @Html.MenuItem(" UI &amp; Interface", "Index", "Interface")*@
+</ul>
