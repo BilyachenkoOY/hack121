@@ -9,5 +9,6 @@ namespace Hack121.Business.InterfaceDefinitions.Providers
 {
     public interface ITransactionDataProvider : IBaseDataProvider<Transaction>
     {
+        IList<Transaction> GetPayerTransactions(string payerErdpo);
     }
 }

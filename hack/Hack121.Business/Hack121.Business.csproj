@@ -35,6 +35,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CSVFile">
+      <HintPath>..\packages\CSVFile.1.2.2.2\lib\net40\CSVFile.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -125,15 +128,20 @@
   <ItemGroup>
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\PaymentCategory.cs" />
-    <Compile Include="Entities\Transacation.cs" />
+    <Compile Include="Entities\Transaction.cs" />
     <Compile Include="Entities\University.cs" />
     <Compile Include="Entities\User.cs" />
-    <Compile Include="InterfaceDefinitions\Managers\IBaseManager.cs" />
+    <Compile Include="Import\TransactionsImport.cs" />
     <Compile Include="InterfaceDefinitions\Providers\IBaseDataProvider.cs" />
     <Compile Include="InterfaceDefinitions\Providers\IPaymentCategoryDataProvider.cs" />
     <Compile Include="InterfaceDefinitions\Providers\ITransactionDataProvider.cs" />
     <Compile Include="InterfaceDefinitions\Providers\IUniversityDataProvider.cs" />
+    <Compile Include="Managers\BaseEntityManager.cs" />
     <Compile Include="Managers\BaseManager.cs" />
+    <Compile Include="Managers\UniversityManager.cs" />
+    <Compile Include="Managers\CategoryManager.cs" />
+    <Compile Include="Managers\TransationManager.cs" />
+    <Compile Include="Import\Parsers\TransactionsParser007.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Resource.Designer.cs">
       <DependentUpon>Resource.resx</DependentUpon>

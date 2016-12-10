@@ -10,7 +10,6 @@ using Autofac.Integration.Mvc;
 using Hack121.Mvc;
 using Hack121.Business.InterfaceDefinitions;
 using Hack121.Business.Managers;
-using Hack121.Business.InterfaceDefinitions.Managers;
 using Hack121.Business.Entities;
 using Hack121.Business.InterfaceDefinitions.Providers;
 using Hack121.NhibernateProvider.Providers;
@@ -39,7 +38,7 @@ namespace Hack121.App_Start.Autofac
             builder.RegisterType<NhibernateTransactionDataProvider>().As<ITransactionDataProvider>();
             builder.RegisterType<NhibernatePaymentCategoryDataProvider>().As<IPaymentCategoryDataProvider>();
             //Entity managers section
-            
+            builder.RegisterInstance(new Site());
         }
     }
 }

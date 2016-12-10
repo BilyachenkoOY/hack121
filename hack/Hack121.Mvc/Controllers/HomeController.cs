@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hack121.Business.Import;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,8 @@ namespace Hack121.Mvc.Controllers
     {
         public ActionResult Index()
         {
-            Site.Provider.University.Get("123");
+            var transImport = new TransactionsImport();
+            transImport.Import("asdas");
             return View();
         }
     }

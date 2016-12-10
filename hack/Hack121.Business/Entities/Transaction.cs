@@ -12,6 +12,8 @@ namespace Hack121.Business.Entities
 
         public virtual string PayerEdrpo { get; set; }
 
+        public virtual string PaymentDetails { get; set; }
+
         public virtual decimal Price { get; set; }
 
         public virtual DateTime Date { get; set; }
