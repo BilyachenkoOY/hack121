@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,13 +12,26 @@ namespace Hack121.Business.Import
 {
     public class TransactionsImport
     {
-        public virtual void Import(string erdpoCode)
+        protected string GetApiUrl (string erdpoCode, DateTime? from = null, DateTime? to = null)
         {
-            var stream = File.OpenRead("D:\\transactions_2016_12_10.csv"); // look for API
+            if (!from.HasValue)
+                from = DateTime.Today.AddDays(-DateTime.Today.DayOfYear + 1);
+            if (!to.HasValue)
+                to = DateTime.Today;
+            return "http://www.007.org.ua/api/export-transactions-with-params?from={0:yyyy-MM-dd}&to={1:yyyy-MM-dd}&offset=NaN&who={2}"
+                .FormatWith(from, to, erdpoCode);
+        }
+
+        public async virtual void Import(string erdpoCode)
+        {
+            var stream = await new WebClient().OpenReadTaskAsync(GetApiUrl(erdpoCode));
+            // FileStream stream = File.OpenRead("D:\\transactions_2016_12_10.csv"); // look for API
+            if (stream == null)
+                return;
             IList<Transaction> transactions;
-            using(var streamReader = new StreamReader(stream))
+            using(var streamReader = new StreamReader(stream, Encoding.GetEncoding(1251)))
                 transactions = new TransactionsParser007().Parse(streamReader);
-            if(transactions.Count < 5)
+            if(transactions.Count < 1)
                 throw new ArgumentException("erpo");
         }
     }

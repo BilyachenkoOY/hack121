@@ -10,10 +10,10 @@ namespace Hack121.Mvc.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
             var transImport = new TransactionsImport();
-            transImport.Import("asdas");
+            transImport.Import("05407870");
             return View();
         }
     }
