@@ -1,0 +1,35 @@
+﻿<?xml version = "1.0" encoding = "utf-8" ?>
+<hibernate-mapping xmlns = "urn:nhibernate-mapping-2.2" assembly = "Hack121.Business"
+   namespace = "Hack121.Business.Entities">
+
+  <class name = "University">
+    <id name = "Id">
+      <generator class = "native"/>
+    </id>
+    <property name="Edrpou" type="String"/>
+    <property name = "Title" type="String"/>
+    <property name = "YearBudget" type = "Decimal"/>
+  </class>
+
+  <class name="Transaction">
+    <id name="Id">
+      <generator class = "native"/>
+    </id>
+    <property name="TransactionId" type="String"/>
+    <property name="PayerEdrpo" type="String"/>
+    <property name = "Price" type="Decimal"/>
+    <property name = "Date" type = "DateTime"/>
+    <property name="CategoryId" type="String"/>
+    <property name="ReceiverTitle" type="String"/>
+  </class>
+
+  <class name="PaymentCategory">
+    <id name="Id">
+      <generator class = "native"/>
+    </id>
+    <property name="Title" type="String"/>
+    <property name = "Keywords" type="String"/>
+  </class>
+
+</hibernate-mapping>
+
