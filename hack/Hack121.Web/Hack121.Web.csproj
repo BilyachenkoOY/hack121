@@ -1124,6 +1124,8 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <!--<None Include="Properties\PublishProfiles\ztu-fikt - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\ztu-fikt - Web Deploy.pubxml" />-->
+    <None Include="Properties\PublishProfiles\hack121 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\hack121 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jqmeter\jqmeter.js" />
     <Content Include="Scripts\jqmeter\jqmeter.min.js" />
@@ -1190,8 +1192,6 @@
     <Folder Include="Areas\Admin\Views\Home\" />
     <Folder Include="Content\Fonts\" />
     <Folder Include="Css\Theme\vendors\bootstrap-wysihtml5\.settings\" />
-    <Folder Include="Scripts\admin\" />
-    <Folder Include="Scripts\pages\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hack121.Mvc\Hack121.Mvc.csproj">

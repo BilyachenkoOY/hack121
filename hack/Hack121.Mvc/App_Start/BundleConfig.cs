@@ -14,12 +14,6 @@ namespace Hack121.Mvc
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui-{version}.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/admin").Include(
-                        "~/Scripts/admin/*.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/pages").Include(
-                        "~/Scripts/pages/*.js"));
-
             bundles.Add(new ScriptBundle("~/bundles/jqmeter").Include(
                         "~/Scripts/jqmeter/jqmeter.js"));
 

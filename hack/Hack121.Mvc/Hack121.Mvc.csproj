@@ -162,7 +162,7 @@
     <Compile Include="App_Start\AutoMapper\AutoMapperConfig.cs" />
     <Compile Include="App_Start\AutoMapper\IHaveCustomMappings.cs" />
     <Compile Include="App_Start\AutoMapper\IMapFrom.cs" />
-    <Compile Include="App_Start\AutoMapper\BundleConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\Routes\AdminAreaRegistrator.cs" />
     <Compile Include="App_Start\Routes\RouteConfig.cs" />
     <Compile Include="Components\WebViewPage.cs" />
