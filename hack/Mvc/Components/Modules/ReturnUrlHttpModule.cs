@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
-namespace AskGenerator.Mvc.Modules
+namespace Hach121.Mvc.Modules
 {
     public class ReturnUrlHttpModule : IHttpModule
     {

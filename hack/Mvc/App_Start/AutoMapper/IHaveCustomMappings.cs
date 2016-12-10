@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AskGenerator.App_Start.AutoMapper
+namespace Hach121.App_Start.AutoMapper
 {
     public interface IHaveCustomMappings
     {

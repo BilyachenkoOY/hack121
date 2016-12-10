@@ -1,6 +1,6 @@
-﻿using AskGenerator.Business.Entities;
-using AskGenerator.Business.InterfaceDefinitions.Managers;
-using AskGenerator.Mvc.Components;
+﻿using Hach121.Business.Entities;
+using Hach121.Business.InterfaceDefinitions.Managers;
+using Hach121.Mvc.Components;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
-namespace AskGenerator.Mvc.Controllers
+namespace Hach121.Mvc.Controllers
 {
     public class BaseController : Controller
     {

@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace AskGenerator.Mvc
+namespace Hach121.Mvc
 {
     public class BundleConfig
     {

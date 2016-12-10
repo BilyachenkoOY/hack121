@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
-namespace AskGenerator.ViewModels
+namespace Hach121.ViewModels
 {
     public class BaseViewModel
     {

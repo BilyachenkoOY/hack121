@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Autofac.Builder;
 using Autofac.Integration.Mvc;
-using AskGenerator.Mvc;
-using AskGenerator.Business.InterfaceDefinitions;
-using AskGenerator.Business.Managers;
-using AskGenerator.Business.InterfaceDefinitions.Managers;
-using AskGenerator.Business.Entities;
+using Hach121.Mvc;
+using Hach121.Business.InterfaceDefinitions;
+using Hach121.Business.Managers;
+using Hach121.Business.InterfaceDefinitions.Managers;
+using Hach121.Business.Entities;
 
-namespace AskGenerator.App_Start.Autofac
+namespace Hach121.App_Start.Autofac
 {
     public class AutofacConfig
     {

@@ -1,5 +1,5 @@
-﻿using AskGenerator.App_Start.AutoMapper;
-using AskGenerator.Business.Entities;
+﻿using Hach121.App_Start.AutoMapper;
+using Hach121.Business.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AskGenerator.ViewModels
+namespace Hach121.ViewModels
 {
     using R = Resources.Resource;
     public class RegistrationModel : BaseViewModel, IMapFrom<User>

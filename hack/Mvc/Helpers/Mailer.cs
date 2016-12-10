@@ -1,4 +1,4 @@
-﻿using AskGenerator.Mvc.Helpers;
+﻿using Hach121.Mvc.Helpers;
 using Resources;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
 using System.Text;
-namespace AskGenerator.Helpers
+namespace Hach121.Helpers
 {
     public static class Mailer
     {

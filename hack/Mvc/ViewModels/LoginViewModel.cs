@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AskGenerator.ViewModels
+namespace Hach121.ViewModels
 {
     using R = Resources.Resource;
     public class LoginViewModel

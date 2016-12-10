@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using AskGenerator.Business.Entities;
-using AskGenerator.ViewModels;
+using Hach121.Business.Entities;
+using Hach121.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AskGenerator.App_Start.AutoMapper
+namespace Hach121.App_Start.AutoMapper
 {
     public static class AutoMapperConfig
     {

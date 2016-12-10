@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace AskGenerator.App_Start.Routes
+namespace Hach121.App_Start.Routes
 {
     public class RouteConfig
     {

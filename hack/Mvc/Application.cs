@@ -1,8 +1,8 @@
-﻿using AskGenerator.App_Start;
-using AskGenerator.App_Start.Autofac;
-using AskGenerator.App_Start.AutoMapper;
-using AskGenerator.App_Start.Routes;
-using AskGenerator.Core.Binders;
+﻿using Hach121.App_Start;
+using Hach121.App_Start.Autofac;
+using Hach121.App_Start.AutoMapper;
+using Hach121.App_Start.Routes;
+using Hach121.Core.Binders;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -16,13 +16,13 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
-namespace AskGenerator.Mvc
+namespace Hach121.Mvc
 {
     public class Application : HttpApplication
     {
         protected void Application_Start()
         {
-            ControllerBuilder.Current.DefaultNamespaces.Add("AskGenerator.Mvc.Controllers");
+            ControllerBuilder.Current.DefaultNamespaces.Add("Hach121.Mvc.Controllers");
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AutofacConfig.RegisterDependencies();

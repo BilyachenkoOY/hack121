@@ -1,16 +1,16 @@
-﻿using AskGenerator.Business.InterfaceDefinitions;
+﻿using Hach121.Business.InterfaceDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using AskGenerator.Business.InterfaceDefinitions.Managers;
+using Hach121.Business.InterfaceDefinitions.Managers;
 using System.Web;
 
-using AskGenerator.Business.Entities;
+using Hach121.Business.Entities;
 
-namespace AskGenerator
+namespace Hach121
 {
     public static class Site
     {
