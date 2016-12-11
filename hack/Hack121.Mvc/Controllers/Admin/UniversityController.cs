@@ -73,7 +73,7 @@ namespace Hack121.Mvc.Controllers.Admin
 
             var transManager = Site.Current.Transaction;
             var trans = transManager.GetByIdList(transactions.Select(t => t.Id).ToList());
-            trans.AsParallel().ForAll(t => t.TransactionId = paymentCategory.Id);
+            trans.AsParallel().ForAll(t => t.CategoryId = paymentCategory.Id);
             transManager.Create(trans);
             LuceneSearch.AddUpdateLuceneIndex(trans);
 

@@ -16,11 +16,6 @@
 .bordered{
   border-bottom: 1px solid black;
 }
-.canvas{
-  width: 60%;
-  height: 340px;
-  border: 1px solid black;
-}
 
 .info{
   text-align: center;
