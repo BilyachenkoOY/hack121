@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace Hack121.Business.InterfaceDefinitions.Providers
 {
-    public interface ITransactionDataProvider : IBaseDataProvider<Transaction>
+    public interface ITransactionDataProvider : IBaseDataProvider<PaymentTransaction>
     {
-        IList<Transaction> GetPayerTransactions(string payerErdpo);
+        IList<PaymentTransaction> GetPayerTransactions(string payerErdpo);
+
+        void Create(IEnumerable<PaymentTransaction> entities);
     }
 }

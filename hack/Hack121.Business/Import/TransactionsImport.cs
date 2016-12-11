@@ -1,5 +1,6 @@
 ﻿using Hack121.Business.Entities;
 using Hack121.Business.Import.Parsers;
+using Hack121.Business.Managers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,11 +8,17 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace Hack121.Business.Import
 {
     public class TransactionsImport
     {
+        TransactionManager manager;
+        public TransactionsImport()
+        {
+            manager = DependencyResolver.Current.GetService<TransactionManager>();
+        }
         protected string GetApiUrl (string erdpoCode, DateTime? from = null, DateTime? to = null)
         {
             if (!from.HasValue)
@@ -22,17 +29,16 @@ namespace Hack121.Business.Import
                 .FormatWith(from, to, erdpoCode);
         }
 
-        public async virtual void Import(string erdpoCode)
+        public virtual void Import(string erdpoCode)
         {
-            var stream = await new WebClient().OpenReadTaskAsync(GetApiUrl(erdpoCode));
+            var stream = new WebClient().OpenRead(GetApiUrl(erdpoCode));
             // FileStream stream = File.OpenRead("D:\\transactions_2016_12_10.csv"); // look for API
             if (stream == null)
                 return;
-            IList<Transaction> transactions;
+            IList<PaymentTransaction> transactions;
             using(var streamReader = new StreamReader(stream, Encoding.GetEncoding(1251)))
                 transactions = new TransactionsParser007().Parse(streamReader);
-            if(transactions.Count < 1)
-                throw new ArgumentException("erpo");
+            manager.Create(transactions);
         }
     }
 }

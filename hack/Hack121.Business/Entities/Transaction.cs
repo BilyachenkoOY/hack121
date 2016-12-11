@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hack121.Business.Entities
 {
-    public class Transaction : Entity
+    public class PaymentTransaction : Entity
     {
         public virtual string TransactionId { get; set; }
 

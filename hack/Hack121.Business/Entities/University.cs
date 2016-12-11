@@ -13,5 +13,7 @@ namespace Hack121.Business.Entities
         public virtual string Title { get; set; }
 
         public virtual decimal YearBudget { get; set; }
+
+        public virtual string ShortName { get; set; }
     }
 }

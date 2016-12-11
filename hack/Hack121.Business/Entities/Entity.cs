@@ -16,14 +16,14 @@ namespace Hack121.Business.Entities
     {
         public virtual string Id { get; set; }
 
-        protected virtual EntityFields Fields { get; set; }
+        //protected EntityFields Fields { get; private set; }
 
         public Entity()
         {
             Id = Guid.NewGuid().ToString();
-            Fields = new EntityFields();
+            //Fields = new EntityFields();
         }
-
+        /*
         #region mapping
         [EditorBrowsable(EditorBrowsableState.Never)]
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -56,6 +56,7 @@ namespace Hack121.Business.Entities
             }
         }
         #endregion
+         */
     }
 
     [XmlRoot("Fields")]

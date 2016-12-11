@@ -12,9 +12,9 @@ namespace Hack121.Business.Import.Parsers
 {
     public class TransactionsParser007
     {
-        public IList<Transaction> Parse(StreamReader stream)
+        public IList<PaymentTransaction> Parse(StreamReader stream)
         {
-            var results = new List<Transaction>();
+            var results = new List<PaymentTransaction>();
             var reader = new CSVReader(stream, delim: ';', first_row_are_headers: true);
             foreach(var line in reader.Lines()) {
                 var transaction = ParseTransaction(line);
@@ -25,16 +25,23 @@ namespace Hack121.Business.Import.Parsers
             return results;
         }
 
-        protected Transaction ParseTransaction(IList<string> row)
+        protected PaymentTransaction ParseTransaction(IList<string> row)
         {
             // trans_id;trans_date;payer_edrpou;payer_name;payer_mfo;payer_bank;recipt_edrpou;recipt_name;recipt_mfo;recipt_bank;amount;payment_details
-            var result = new Transaction();
-            result.PayerEdrpo = row[0];
-            result.Date = DateTime.Parse(row[1], CultureInfo.GetCultureInfo(1251));
+            var result = new PaymentTransaction();
+            result.TransactionId = row[0];
             result.PayerEdrpo = row[2];
             result.ReceiverTitle = row[7];
-            result.Price = decimal.Parse(row[10]);
             result.PaymentDetails = row[11];
+
+            try
+            {
+                result.Date = DateTime.Parse(row[1]);
+                result.Price = decimal.Parse(row[10]);
+            }
+            catch (FormatException){
+                return null;
+            }
 
             //if (IsAnyEmpty(result.PayerEdrpo, result.PayerEdrpo, result.ReceiverTitle, result.PaymentDetails))
             //    return null;
