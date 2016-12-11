@@ -130,8 +130,7 @@ namespace Hack121.Business.Search
                 PaymentDetails = doc.Get("PaymentDetails"),
                 PayerEdrpo = doc.Get("PayerEdrpo"),
                 CategoryId = doc.Get("CategoryId"),
-                Price = decimal.Parse(doc.Get("Price")),
-                Date = DateTime.Parse(doc.Get("Date")),
+                Price = decimal.Parse(doc.Get("Price"))
             };
         }
 

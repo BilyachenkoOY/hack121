@@ -1,7 +1,7 @@
 ﻿var PieChart = function(data, keyTitle, valueTitle){
 var margin = {top:40,left:40,right:40,bottom:40};
-width = 450;
-height = 450;
+width = 350;
+height = 350;
 radius = Math.min(width-100,height-100)/2;
 var color = d3.scale.ordinal()
 .range(["#e53517", "#6b486b", "#ffbb78","#7ab51d","#6b486b","#e53517","#7ab51d","#ff7f0e","#ffc400"]);
@@ -69,8 +69,5 @@ var g = svg.selectAll(".arc")
 		            
 		    	    .text(function(d){
 		    	      return d.value;
-		    	    });
-		    	    
-		    	   
-		
+		    	    });		
 };

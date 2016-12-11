@@ -12,9 +12,21 @@ namespace Hack121.Mvc.Controllers
 {
     public class UniversityController : Controller
     {
-        public ActionResult Details()
-        {          
-            return View();
+        public ActionResult Details(string id)
+        {
+            var university = Site.Current.University.Get(id);
+
+            var viewModel = Mapper.Map<University, UniversityModel>(university);
+            viewModel.Transactions = Site.Current.Transaction.GetPayerTransactions(university.Edrpou).ToList();            
+            return View(viewModel);
+        }
+
+        [HttpGet]
+        [ChildActionOnly]
+        public ActionResult GetPeymentTransactionInfo(string edrpo)
+        {
+            var transactions = Site.Current.Transaction.GetPayerTransactions(edrpo);
+            return View(transactions);
         }
     }
 }

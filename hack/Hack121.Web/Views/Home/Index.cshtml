@@ -1,4 +1,4 @@
-﻿@Model List<Hack121.Mvc.ViewModels.UniversityModel>
+﻿@model List<Hack121.Mvc.ViewModels.UniversityModel>
     <div class="main-page">
         <div class="section no-pad-bot" id="index-banner">
             <div class="container">
@@ -27,7 +27,9 @@
                         {
                             <tr>
                                 <td>
-                                   @university.Edrpou
+                                    <a href="@Url.Action("Details", "University", new { id = university.Id })">
+                                        @university.Edrpou
+                                    </a>
                                 </td>
                                 <td>
                                     @university.Title

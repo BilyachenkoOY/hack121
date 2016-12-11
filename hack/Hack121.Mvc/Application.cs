@@ -6,9 +6,11 @@ using Hack121.Core.Binders;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Helpers;
@@ -29,7 +31,8 @@ namespace Hack121.Mvc
             AutoMapperConfig.Configure();
             SetModelBinders();
             AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.NameIdentifier;
-
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("uk-ua");
+            Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("uk-ua");
         }
 
         private void SetModelBinders()

@@ -1,17 +1,25 @@
-﻿    <div class="section no-pad-bot" id="index-banner">
+﻿@model Hack121.Mvc.ViewModels.UniversityModel    
+@{
+    var PricesPerCategory = Model.Transactions.Where(t => !string.IsNullOrEmpty(t.CategoryId)).GroupBy(t => t.CategoryId).ToDictionary(u => u.Key, g => g.Sum(x=>x.Price));    
+}
+
+<div class="section no-pad-bot" id="index-banner">
         <div class="row">
             <div class="container bordered">
                 <br><br>
-                <h1 class="header orange-text">НАУ</h1>
+                <h1 class="header orange-text">@Model.ShortName</h1>
             </div>
             <div class="container">
-                <h3 style="">Річний бюджет: 2500$<h3>
-            </div>Hack121.Mvc.ViewModels
+                <h3>Річний бюджет: 150000000 грн</h3>
+            </div>
         </div>
         <div class="row">
             <div class="container">
-                <canvas id="svgContent"></canvas>
-                <div class="section info">
+                <div class="section" style="float: left; width: 40%;">
+                    <div id="svgContent"></div>
+                </div>
+
+                <div style="float: right; width: 40%; margin-top:20px;" class="section info">
                     <h5>Категорії витрат</h5>
                     <table>
                         <thead>
@@ -26,12 +34,26 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @*@foreach(var pair in PricesPerCategory)
+                            {
                             <tr>
                                 <td>
-                                    Ремонт
+                                    @pair.Key
                                 </td>
                                 <td>
-                                    35%
+                                    @pair.Value
+                                </td>
+                                <td>
+                                    <a href="categoryDetails.html">Детальніше</a>
+                                </td>
+                            </tr>
+                            }*@
+                            <tr>
+                                <td>
+                                    Газ
+                                </td>
+                                <td>
+                                    44000
                                 </td>
                                 <td>
                                     <a href="categoryDetails.html">Детальніше</a>
@@ -42,7 +64,7 @@
                                     Зар. плата
                                 </td>
                                 <td>
-                                    25%
+                                    33000
                                 </td>
                                 <td>
                                     <a href="categoryDetails.html">Детальніше</a>
@@ -50,10 +72,10 @@
                             </tr>
                             <tr>
                                 <td>
-                                    Ремонт
+                                    Ремонтні матеріали
                                 </td>
                                 <td>
-                                    40%
+                                    25000
                                 </td>
                                 <td>
                                     <a href="categoryDetails.html">Детальніше</a>
@@ -66,3 +88,11 @@
         </div>
 
     </div>
+
+<script type="text/javascript">
+    window.onload = function () {
+        var data = [{ category: "Газ", price: "44000" }, { category: "Ремонт", price: "25000.5" }, { category: "Зар. плата", price: "33000" }];
+        var pieChart = new PieChart(data, "category", "price");
+    };
+
+</script>

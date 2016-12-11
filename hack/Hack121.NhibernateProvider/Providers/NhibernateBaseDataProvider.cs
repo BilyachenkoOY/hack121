@@ -38,6 +38,7 @@ namespace Hack121.NhibernateProvider.Providers
             return Execute(session =>
             {
                 var criteria = session.CreateCriteria<T>();
+                
                 return criteria.List<T>();
             });
         }

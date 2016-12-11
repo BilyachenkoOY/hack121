@@ -21,5 +21,7 @@ namespace Hack121.Mvc.ViewModels
         public virtual decimal YearBudget { get; set; }
 
         public virtual string ShortName { get; set; }
+
+        public List<PaymentTransaction> Transactions { get; set; }
     }
 }

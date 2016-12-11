@@ -20,7 +20,7 @@
             $this = $(this)
             $.post($this.attr("data-url"), { pattern: $this.val() }, function (data) {
                 $results.html(data);
-                if ($results.find('ul li').length)
+                if ($results.find('div span').length)
                     $categoryForm.show();
                 else
                     $categoryForm.hide();
