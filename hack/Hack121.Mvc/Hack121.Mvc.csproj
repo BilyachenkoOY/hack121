@@ -169,6 +169,7 @@
     <Compile Include="Controllers\Admin\UniversityController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UniversityController.cs" />
     <Compile Include="Helpers\IdentityExtensions.cs" />
     <Compile Include="Helpers\Mailer.cs" />
     <Compile Include="Helpers\MailsData.Designer.cs">

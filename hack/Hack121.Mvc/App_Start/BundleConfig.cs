@@ -44,8 +44,9 @@ namespace Hack121.Mvc
                       "~/Css/plugins/*.css"));
 
             bundles.Add(new StyleBundle("~/bundles/css").Include(
-                "~/Css/select2.css",
-                "~/Css/Site.css"                
+                "~/Css/style.css",
+                "~/Css/materialize.css",
+                "~/Css/jquery.dynatable.css"
                 ));
 
 

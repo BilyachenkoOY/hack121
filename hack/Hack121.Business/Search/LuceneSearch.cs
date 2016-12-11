@@ -1,4 +1,5 @@
-﻿using Lucene.Net.Analysis.Standard;
+﻿using Hack121.Business.Entities;
+using Lucene.Net.Analysis.Standard;
 using Lucene.Net.Documents;
 using Lucene.Net.Index;
 using Lucene.Net.QueryParsers;
@@ -35,25 +36,28 @@ namespace Hack121.Business.Search
             }
         }
 
-        private static void _addToLuceneIndex(TransactionSearchData TransactionSearchData, IndexWriter writer)
+        private static void _addToLuceneIndex(PaymentTransaction trans, IndexWriter writer)
         {
             // remove older index entry
-            var searchQuery = new TermQuery(new Term("Id", TransactionSearchData.Id));
+            var searchQuery = new TermQuery(new Term("Id", trans.Id));
             writer.DeleteDocuments(searchQuery);
 
             // add new index entry
             var doc = new Document();
 
             // add lucene fields mapped to db fields
-            doc.Add(new Field("Id", TransactionSearchData.Id.ToString(), Field.Store.YES, Field.Index.NOT_ANALYZED));
-//            doc.Add(new Field("PayerEdrpo", TransactionSearchData.PayerEdrpo, Field.Store.YES, Field.Index.NOT_ANALYZED));
-            doc.Add(new Field("PaymentDetails", TransactionSearchData.PaymentDetails, Field.Store.YES, Field.Index.ANALYZED));
+            doc.Add(new Field("Id", trans.Id.ToString(), Field.Store.YES, Field.Index.NOT_ANALYZED));
+            doc.Add(new Field("PayerEdrpo", trans.PayerEdrpo, Field.Store.YES, Field.Index.NOT_ANALYZED));
+            doc.Add(new Field("PaymentDetails", trans.PaymentDetails.Replace(".", ". "), Field.Store.YES, Field.Index.ANALYZED));
+
+            doc.Add(new Field("CategoryId", trans.CategoryId ?? string.Empty, Field.Store.YES, Field.Index.NO));
+            doc.Add(new Field("Price", trans.Price.ToString(), Field.Store.YES, Field.Index.NO));
 
             // add entry to index
             writer.AddDocument(doc);
         }
 
-        public static void AddUpdateLuceneIndex(IEnumerable<TransactionSearchData> transactionDatas)
+        public static void AddUpdateLuceneIndex(IEnumerable<PaymentTransaction> transactionDatas)
         {
             // init lucene
             var analyzer = new StandardAnalyzer(version);
@@ -67,9 +71,9 @@ namespace Hack121.Business.Search
             }
         }
 
-        public static void AddUpdateLuceneIndex(TransactionSearchData transaction)
+        public static void AddUpdateLuceneIndex(PaymentTransaction transaction)
         {
-            AddUpdateLuceneIndex(new List<TransactionSearchData> { transaction });
+            AddUpdateLuceneIndex(new List<PaymentTransaction> { transaction });
         }
 
         public static void ClearLuceneIndexRecord(int record_id)
@@ -118,20 +122,24 @@ namespace Hack121.Business.Search
             }
         }
 
-        private static TransactionSearchData _mapLuceneDocumentToData(Document doc)
+        private static PaymentTransaction _mapLuceneDocumentToData(Document doc)
         {
-            return new TransactionSearchData
+            return new PaymentTransaction
             {
                 Id = doc.Get("Id"),
-                PaymentDetails = doc.Get("PaymentDetails")
+                PaymentDetails = doc.Get("PaymentDetails"),
+                PayerEdrpo = doc.Get("PayerEdrpo"),
+                CategoryId = doc.Get("CategoryId"),
+                Price = decimal.Parse(doc.Get("Price")),
+                Date = DateTime.Parse(doc.Get("Date")),
             };
         }
 
-        private static IEnumerable<TransactionSearchData> _mapLuceneToDataList(IEnumerable<Document> hits)
+        private static IList<PaymentTransaction> _mapLuceneToDataList(IEnumerable<Document> hits)
         {
             return hits.Select(_mapLuceneDocumentToData).ToList();
         }
-        private static IEnumerable<TransactionSearchData> _mapLuceneToDataList(IEnumerable<ScoreDoc> hits,
+        private static IList<PaymentTransaction> _mapLuceneToDataList(IEnumerable<ScoreDoc> hits,
             IndexSearcher searcher)
         {
             return hits.Select(hit => _mapLuceneDocumentToData(searcher.Doc(hit.Doc))).ToList();
@@ -151,15 +159,16 @@ namespace Hack121.Business.Search
             return query;
         }
 
-        private static IEnumerable<TransactionSearchData> _search (string searchQuery, string searchField = "")
+        private static IList<PaymentTransaction> _search(string searchQuery, string searchField = "")
         {
             // validation
-            if (searchQuery.Replace("*", "").Replace("?", "").IsEmpty()) return new List<TransactionSearchData>();
+            if (searchQuery.Replace("*", "").Replace("?", "").IsEmpty())
+                return new List<PaymentTransaction>();
 
             // set up lucene searcher
             using (var searcher = new IndexSearcher(_directory, false))
             {
-                var hits_limit = 1000;
+                var hits_limit = short.MaxValue;
                 var analyzer = new StandardAnalyzer(version);
 
                 // search by single field
@@ -189,21 +198,28 @@ namespace Hack121.Business.Search
             }
         }
 
-        public static IEnumerable<TransactionSearchData> Search(string input, string fieldName = "")
+        public static IList<PaymentTransaction> Search(string input, string fieldName = "")
         {
             if (input.IsEmpty())
-                return new List<TransactionSearchData>();
+                return new List<PaymentTransaction>();
 
-            var terms = input.Trim().Replace("-", " ").Split(' ')
-                .Where(x => !x.IsEmpty()).Select(x => x.Trim() + "*");
+            var terms = input.Trim()
+                .Replace("-", " ")
+                .Split(' ')
+                .Where(x => !x.IsEmpty()).Select(x => x.Trim());
             input = string.Join(" ", terms);
 
             return _search(input, fieldName);
         }
 
-        public static IEnumerable<TransactionSearchData> SearchDefault(string input, string fieldName = "")
+        public static IEnumerable<PaymentTransaction> SearchByCategory(string input)
         {
-            return input.IsEmpty() ? new List<TransactionSearchData>() : _search(input, fieldName);
+            return Search(input, "PaymentDetails").Where(pt => pt.CategoryId.IsEmpty());
+        }
+
+        public static IEnumerable<PaymentTransaction> SearchDefault(string input, string fieldName = "")
+        {
+            return input.IsEmpty() ? Enumerable.Empty<PaymentTransaction>() : _search(input, fieldName);
         }
     }
 }

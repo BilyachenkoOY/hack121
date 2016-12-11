@@ -12,5 +12,7 @@ namespace Hack121.Business.InterfaceDefinitions.Providers
         IList<PaymentTransaction> GetPayerTransactions(string payerErdpo);
 
         void Create(IEnumerable<PaymentTransaction> entities);
+
+        IList<PaymentTransaction> GetByIdList(IList<string> ids);
     }
 }

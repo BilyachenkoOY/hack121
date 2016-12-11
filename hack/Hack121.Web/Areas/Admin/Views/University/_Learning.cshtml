@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Hack121.Business.Entities.PaymentTransaction>
+
+    <h5>Total Count: @Model.Count()</h5>
+    <div style="width: 1100px">
+        @foreach (var item in Model)
+        {
+            <div>
+                <span class="col s10">
+                    @Html.DisplayFor(x => item.PaymentDetails)
+                </span>
+                <span class="col s2">@Html.DisplayFor(x => item.PayerEdrpo)</span>
+            </div>
+        }
+
+    </div>

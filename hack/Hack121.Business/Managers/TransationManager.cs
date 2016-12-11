@@ -26,6 +26,12 @@ namespace Hack121.Business.Managers
             return FromCache(key, () => Provider.GetPayerTransactions(payerErdpo));
         }
 
+        public IList<PaymentTransaction> GetByIdList(IList<string> ids)
+        {
+            if (ids.Count == 0)
+                return new List<PaymentTransaction>();
+            return Provider.GetByIdList(ids);
+        }
 
         public void Create(IList<PaymentTransaction> entities)
         {

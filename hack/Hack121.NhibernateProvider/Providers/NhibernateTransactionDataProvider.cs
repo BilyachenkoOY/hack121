@@ -1,5 +1,6 @@
 ﻿using Hack121.NhibernateProvider.Providers;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,6 +32,18 @@ namespace Hack121.NhibernateProvider.cs.Providers
                         session.SaveOrUpdate(e);
                     }
                     session.Flush();
+            });
+        }
+
+
+        public IList<PaymentTransaction> GetByIdList(IList<string> ids)
+        {
+            return Execute(session =>
+            {
+                var criteria = session.CreateCriteria<PaymentTransaction>();
+                return criteria
+                    .Add(Expression.In("Id", ids.ToArray()))
+                    .List<PaymentTransaction>();
             });
         }
     }

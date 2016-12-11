@@ -10,8 +10,12 @@ namespace Hack121.Business.Search
     {
         public string Id { get; set; }
 
-        public string PayerEdrpo { get; set; }
+        public virtual string Edrpou { get; set; }
 
-        public string PaymentDetails { get; set; }
+        public virtual string Title { get; set; }
+
+        public virtual decimal YearBudget { get; set; }
+
+        public virtual string ShortName { get; set; }
     }
 }

@@ -1,0 +1,97 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+.bordered{
+  border-bottom: 1px solid black;
+}
+.canvas{
+  width: 60%;
+  height: 340px;
+  border: 1px solid black;
+}
+
+.info{
+  text-align: center;
+  height: 340px;
+  width: 35%;
+  border: 1px solid black;
+  float:  right;
+
+}
+
+.info table{
+  margin-top: 30px;
+}
+
+.info table td{
+  text-align: center;
+}
+
+.transaction-payer{
+  font-size: 50px;
+  float: left;
+}
+
+.transaction-receiver{
+  font-size: 50px;
+  float: right;
+}
+
+.payer-receiver-separator{
+    margin-left: 35%;
+    color: orange;
+}
+
+.spending-amount{
+  margin-top: 50px;
+}
+
+.positive-vote{
+  float: right;
+  color: green;
+  font-size: 50px;
+  margin-right: 50px;
+}
+
+.negative-vote{
+  float: left;
+  color: red;
+  font-size: 50px;
+  margin-left: 50px;
+}
+
+.voting{
+  margin-top: 100px;
+}
+
+.voting-question{
+  margin-top: 50px;
+}
+
+.dynatable-search{
+    width: 100%;
+}
+
+.dynatable-per-page-label{
+    display: none;
+}
+
+.dynatable-active-page{
+    background: black !important;
+}
+
+.main-page{
+    margin-top: -100px;
+}

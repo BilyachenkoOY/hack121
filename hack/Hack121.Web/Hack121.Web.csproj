@@ -164,10 +164,6 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Css\bootstrap-theme.css" />
-    <Content Include="Css\bootstrap-theme.min.css" />
-    <Content Include="Css\bootstrap.css" />
-    <Content Include="Css\bootstrap.min.css" />
     <Content Include="Content\Admin.css" />
     <Content Include="Css\img\ArrowUp.png" />
     <Content Include="Css\img\expander-minus.png" />
@@ -176,10 +172,14 @@
     <Content Include="Css\img\img1.jpeg" />
     <Content Include="Css\img\logo_nom1.jpg" />
     <Content Include="Css\img\sprite.png" />
+    <Content Include="Css\jquery.dynatable.css" />
+    <Content Include="Css\materialize.css" />
+    <Content Include="Css\materialize.min.css" />
     <Content Include="Css\plugins\bootstrap-toggle.css" />
     <Content Include="Css\Site.css" />
     <Content Include="Css\select2.css" />
     <Content Include="Css\select2.min.css" />
+    <Content Include="Css\style.css" />
     <Content Include="Css\Theme\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Css\Theme\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Css\Theme\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -982,6 +982,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\captcha.js" />
+    <Content Include="Scripts\charts\piechart.js" />
     <Content Include="Scripts\controls.js" />
     <Content Include="Scripts\gtm.js" />
     <Content Include="Scripts\i18n\en.js" />
@@ -1125,15 +1126,39 @@
     <!--<None Include="Properties\PublishProfiles\ztu-fikt - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\ztu-fikt - Web Deploy.pubxml" />-->
     <Content Include="Areas\Admin\Views\University\Index.cshtml" />
+    <Content Include="fonts\roboto\Roboto-Bold.eot" />
+    <Content Include="fonts\roboto\Roboto-Bold.ttf" />
+    <Content Include="fonts\roboto\Roboto-Bold.woff" />
+    <Content Include="fonts\roboto\Roboto-Bold.woff2" />
+    <Content Include="fonts\roboto\Roboto-Light.eot" />
+    <Content Include="fonts\roboto\Roboto-Light.ttf" />
+    <Content Include="fonts\roboto\Roboto-Light.woff" />
+    <Content Include="fonts\roboto\Roboto-Light.woff2" />
+    <Content Include="fonts\roboto\Roboto-Medium.eot" />
+    <Content Include="fonts\roboto\Roboto-Medium.ttf" />
+    <Content Include="fonts\roboto\Roboto-Medium.woff" />
+    <Content Include="fonts\roboto\Roboto-Medium.woff2" />
+    <Content Include="fonts\roboto\Roboto-Regular.eot" />
+    <Content Include="fonts\roboto\Roboto-Regular.ttf" />
+    <Content Include="fonts\roboto\Roboto-Regular.woff" />
+    <Content Include="fonts\roboto\Roboto-Regular.woff2" />
+    <Content Include="fonts\roboto\Roboto-Thin.eot" />
+    <Content Include="fonts\roboto\Roboto-Thin.ttf" />
+    <Content Include="fonts\roboto\Roboto-Thin.woff" />
+    <Content Include="fonts\roboto\Roboto-Thin.woff2" />
+    <Content Include="Areas\Admin\Views\University\Learning.cshtml" />
+    <Content Include="Areas\Admin\Views\University\_Learning.cshtml" />
     <None Include="Properties\PublishProfiles\hack121 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\hack121 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\init.js" />
     <Content Include="Scripts\jqmeter\jqmeter.js" />
     <Content Include="Scripts\jqmeter\jqmeter.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
+    <Content Include="Scripts\jquery.dynatable.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -1143,7 +1168,10 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\materialize.js" />
+    <Content Include="Scripts\materialize.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\pages\page.categoryDetails.js" />
     <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\select2.min.js" />
     <Content Include="Scripts\inputs\bootstrap-toggle.js" />
@@ -1181,6 +1209,7 @@
     <Content Include="Views\Account\EditorTemplates\LoginViewModel.cshtml" />
     <Content Include="Views\Shared\_gtm.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\University\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

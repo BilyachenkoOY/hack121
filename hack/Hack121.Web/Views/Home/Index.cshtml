@@ -1,16 +1,47 @@
-﻿{
-    Layout = null;
-}
+﻿@Model List<Hack121.Mvc.ViewModels.UniversityModel>
+    <div class="main-page">
+        <div class="section no-pad-bot" id="index-banner">
+            <div class="container">
+                <br><br>
+                <h1 class="header center ">Warden</h1>
+                <div class="row center">
+                    <h5 class="header col s12 light">We know something about your university...</h5>
+                </div>
+                <div class="row center">
+                </div>
+                <br><br>
+            </div>
+        </div>
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <div> 
+        <div class="container">
+            <div class="section">
+                <table id="search-table">
+                    <thead>
+                        <tr>
+                            <td>No.</td>
+                            <td>University</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var university in Model)
+                        {
+                            <tr>
+                                <td>
+                                   @university.Edrpou
+                                </td>
+                                <td>
+                                    @university.Title
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-</body>
-</html>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            $("#search-table").dynatable();
+        };
+    </script>

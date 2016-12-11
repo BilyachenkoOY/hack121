@@ -4,7 +4,6 @@
 
   <class name = "University">
     <id name = "Id">
-      <generator class = "native"/>
     </id>
     <property name="Edrpou" type="String"/>
     <property name = "Title" type="String"/>
@@ -26,7 +25,6 @@
 
   <class name="PaymentCategory">
     <id name="Id">
-      <generator class = "native"/>
     </id>
     <property name="Title" type="String"/>
     <property name = "Keywords" type="String"/>

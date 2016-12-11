@@ -9,28 +9,24 @@
     @Styles.Render("~/Content/plugins")
     @Styles.Render("~/bundles/css")
     @RenderSection("Styles", required: false)
-    <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:700" rel="stylesheet" />
 </head>
-@{
-    var bdClass = ViewBag.BodyClass ?? string.Empty;
-}
-<body class="@bdClass">
+<body>
     @RenderSection("GTM", false)
-    @RenderSection("NavBar", required: false)
-
+    
     <div class="container">
         <div class="row">
             @RenderBody()
         </div>
     </div>
-
-    @RenderSection("Footer", required: false)
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/inputs")
     @Scripts.Render("~/bundles/controls")
+    @Scripts.Render("~/Scripts/init.js")
+    @Scripts.Render("~/Scripts/materialize.js")
+    @Scripts.Render("~/Scripts/pages/page.categoryDetails.js")
+    @Scripts.Render("~/Scripts/charts/piechart.js")
+    @Scripts.Render("~/Scripts/jquery.dynatable.js")
 
     @RenderSection("Scripts", required: false)
 </body>

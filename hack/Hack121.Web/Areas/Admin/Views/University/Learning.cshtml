@@ -1,0 +1,40 @@
+﻿<input type="search" id="transaction-search" data-url="@Url.Action("Learning", "University")" />
+
+
+<form id="category-form" method="post" url="@Url.Action("AddCategory")" class="form-horizontal">
+    <input type="text" name="categoryName" placeholder="Category..." />
+    <input type="submit" class="btn btn-success" />
+</form>
+<div id="search-result">
+
+</div>
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+        $results = $("#search-result")
+        $categoryForm = $('#category-form')
+        $transactionSearch = $('#transaction-search')
+        $transactionSearch.on("change", function () {
+            $this = $(this)
+            $.post($this.attr("data-url"), { pattern: $this.val() }, function (data) {
+                $results.html(data);
+                if ($results.find('ul li').length)
+                    $categoryForm.show();
+                else
+                    $categoryForm.hide();
+            });
+        });
+
+        $categoryName = $categoryForm.find('[name="categoryName"]');
+        $categoryForm.submit(function (e) {
+            e.preventDefault()
+            $.post($categoryForm.attr('url'), { pattern: $transactionSearch.val(), categoryName: $categoryName.val() }).success(function () {
+                $results.html = '';
+                $categoryName.val('');
+                $transactionSearch.val('');
+            });
+        });
+    };
+</script>
