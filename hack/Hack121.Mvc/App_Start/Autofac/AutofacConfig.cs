@@ -38,6 +38,10 @@ namespace Hack121.App_Start.Autofac
             builder.RegisterType<NhibernateTransactionDataProvider>().As<ITransactionDataProvider>();
             builder.RegisterType<NhibernatePaymentCategoryDataProvider>().As<IPaymentCategoryDataProvider>();
             //Entity managers section
+            builder.RegisterType<CategoryManager>().As<CategoryManager>();
+            builder.RegisterType<TransactionManager>().As<TransactionManager>();
+            builder.RegisterType<UniversityManager>().As<UniversityManager>();
+
             builder.RegisterInstance(new Site());
         }
     }

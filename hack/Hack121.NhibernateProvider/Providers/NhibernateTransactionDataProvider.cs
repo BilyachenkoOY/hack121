@@ -10,16 +10,27 @@ using NHibernate.Criterion;
 
 namespace Hack121.NhibernateProvider.cs.Providers
 {
-    public class NhibernateTransactionDataProvider : NhibernateBaseDataProvider<Transaction>, ITransactionDataProvider
+    public class NhibernateTransactionDataProvider : NhibernateBaseDataProvider<PaymentTransaction>, ITransactionDataProvider
     {
-        public IList<Transaction> GetPayerTransactions(string payerErdpo)
+        public IList<PaymentTransaction> GetPayerTransactions(string payerErdpo)
         {
             return Execute(session =>
             {
-                var criteria = session.CreateCriteria<Transaction>();
+                var criteria = session.CreateCriteria<PaymentTransaction>();
                 return criteria
                     .Add(Expression.Eq("PayerEdrpo", payerErdpo))
-                    .List<Transaction>();
+                    .List<PaymentTransaction>();
+            });
+        }
+        public void Create(IEnumerable<PaymentTransaction> entities)
+        {
+            Execute(session =>
+            {
+                    foreach (var e in entities)
+                    {
+                        session.SaveOrUpdate(e);
+                    }
+                    session.Flush();
             });
         }
     }

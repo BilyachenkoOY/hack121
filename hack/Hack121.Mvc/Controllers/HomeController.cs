@@ -12,8 +12,6 @@ namespace Hack121.Mvc.Controllers
     {
         public async Task<ActionResult> Index()
         {
-            var transImport = new TransactionsImport();
-            transImport.Import("05407870");
             return View();
         }
     }

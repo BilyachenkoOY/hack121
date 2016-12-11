@@ -166,6 +166,7 @@
     <Compile Include="App_Start\Routes\AdminAreaRegistrator.cs" />
     <Compile Include="App_Start\Routes\RouteConfig.cs" />
     <Compile Include="Components\WebViewPage.cs" />
+    <Compile Include="Controllers\Admin\UniversityController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Helpers\IdentityExtensions.cs" />
@@ -181,10 +182,10 @@
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\RegistrationModel.cs" />
+    <Compile Include="ViewModels\ScafoldColumn.cs" />
+    <Compile Include="ViewModels\UniversityModel.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers\Admin\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Hack121.Business\Hack121.Business.csproj">
       <Project>{c8d76b99-b3be-4a3f-abf5-d2bf4b99377f}</Project>

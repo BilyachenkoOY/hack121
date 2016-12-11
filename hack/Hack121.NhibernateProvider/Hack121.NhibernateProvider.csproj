@@ -59,6 +59,10 @@
       <Project>{c8d76b99-b3be-4a3f-abf5-d2bf4b99377f}</Project>
       <Name>Hack121.Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Hack121.Core\Hack121.Core.csproj">
+      <Project>{77896584-1ca2-468e-bbe8-ba4a3827c4a6}</Project>
+      <Name>Hack121.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

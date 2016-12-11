@@ -15,6 +15,10 @@ namespace Hack121
 {
     public class Site
     {
+        public Site()
+        {
+
+        }
         public static Site Current { get { return Get<Site>(); } }
 
         public CategoryManager Category { get { return Get<CategoryManager>(); } }

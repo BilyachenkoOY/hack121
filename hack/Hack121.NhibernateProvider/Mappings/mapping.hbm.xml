@@ -8,18 +8,19 @@
     </id>
     <property name="Edrpou" type="String"/>
     <property name = "Title" type="String"/>
+    <property name = "ShortName" type="String"/>
     <property name = "YearBudget" type = "Decimal"/>
   </class>
 
-  <class name="Transaction">
-    <id name="Id">
-      <generator class = "native"/>
+  <class name="PaymentTransaction">
+    <id name="Id" type="String">
     </id>
     <property name="TransactionId" type="String"/>
     <property name="PayerEdrpo" type="String"/>
     <property name = "Price" type="Decimal"/>
     <property name = "Date" type = "DateTime"/>
     <property name="CategoryId" type="String"/>
+    <property name="PaymentDetails" type="String"/>
     <property name="ReceiverTitle" type="String"/>
   </class>
 

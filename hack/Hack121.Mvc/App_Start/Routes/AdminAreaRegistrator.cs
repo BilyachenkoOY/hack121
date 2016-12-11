@@ -14,12 +14,18 @@ namespace Hack121.App_Start.Routes
         {
             get { return "Admin"; }
         }
-        protected override string[] namespaces { get { return new[] { "Hack121.Controllers.Admin" }; } }
+        protected override string[] namespaces { get { return new[] { "Hack121.Mvc.Controllers.Admin" }; } }
         protected override object defaultsComponets { get { return new { controller = "Home", action = "Index", id = UrlParameter.Optional }; } }
 
         public override void RegisterArea(AreaRegistrationContext registrationContext)
         {
             base.RegisterArea(registrationContext);
+
+            MapRoute(
+                name: "University",
+                url: "university",
+                defaults: new { controller = "University", action = "Index" }
+            );
 
             MapRoute(
                 name: "_Default",
