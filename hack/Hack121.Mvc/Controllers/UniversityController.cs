@@ -17,7 +17,8 @@ namespace Hack121.Mvc.Controllers
             var university = Site.Current.University.Get(id);
 
             var viewModel = Mapper.Map<University, UniversityModel>(university);
-            viewModel.Transactions = Site.Current.Transaction.GetPayerTransactions(university.Edrpou).ToList();            
+            viewModel.Transactions = Site.Current.Transaction.GetPayerTransactions(university.Edrpou);
+            viewModel.Categories = Site.Current.Category.Dictionary();
             return View(viewModel);
         }
 

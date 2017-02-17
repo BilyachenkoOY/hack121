@@ -68,7 +68,15 @@ namespace Hack121.Mvc.Controllers.Admin
             if (!transactions.Any())
                 return Json(null);
 
-            var paymentCategory = new PaymentCategory() { Title = categoryName, Keywords = pattern };
+            var list = Site.Current.Category.List();
+            var paymentCategory = list.FirstOrDefault(p => p.Title.Equals(categoryName, StringComparison.OrdinalIgnoreCase));
+            if (paymentCategory == null)
+            {
+                paymentCategory = new PaymentCategory() { Title = categoryName, Keywords = pattern };
+            } else
+            {
+                paymentCategory.Keywords += ';' + pattern;
+            }
             Site.Current.Category.Create(paymentCategory);
 
             var transManager = Site.Current.Transaction;

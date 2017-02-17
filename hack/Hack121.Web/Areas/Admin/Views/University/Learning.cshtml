@@ -30,10 +30,9 @@
         $categoryName = $categoryForm.find('[name="categoryName"]');
         $categoryForm.submit(function (e) {
             e.preventDefault()
-            $.post($categoryForm.attr('url'), { pattern: $transactionSearch.val(), categoryName: $categoryName.val() }).success(function () {
-                $results.html = '';
+            $.post($categoryForm.attr('url'), { pattern: $transactionSearch.val(), categoryName: $categoryName.val() }).complete(function () {
+                $results.html('');
                 $categoryName.val('');
-                $transactionSearch.val('');
             });
         });
     };

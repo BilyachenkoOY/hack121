@@ -19,7 +19,6 @@
 
 .info{
   text-align: center;
-  height: 340px;
   width: 35%;
   border: 1px solid black;
   float:  right;
@@ -104,4 +103,17 @@ position: absolute;
   color:white;
   box-shadow: -3px 3px 15px #888888;
   opacity:0;	
+}
+
+a.disabled {
+    pointer-events: none;
+}
+
+.container {
+    width: 80% !important;
+}
+
+tfoot{
+    border-top-color: #d0d0d0;
+    border-top: 1px solid #d0d0d0;
 }

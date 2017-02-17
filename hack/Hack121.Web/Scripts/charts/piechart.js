@@ -1,7 +1,7 @@
 ﻿var PieChart = function(data, keyTitle, valueTitle){
 var margin = {top:40,left:40,right:40,bottom:40};
-width = 350;
-height = 350;
+width = 400;
+height = 400;
 radius = Math.min(width-100,height-100)/2;
 var color = d3.scale.ordinal()
 .range(["#e53517", "#6b486b", "#ffbb78","#7ab51d","#6b486b","#e53517","#7ab51d","#ff7f0e","#ffc400"]);
@@ -31,7 +31,7 @@ var g = svg.selectAll(".arc")
         	var mouseVal = d3.mouse(this);
         	div.style("display","none");
         	div
-        	.html(keyTitle + ":"+ d.data[keyTitle]+"</br>"+ valueTitle + ":"+d.data[valueTitle])
+        	.html(d.data[keyTitle]+"</br>"+d.data[valueTitle])
             .style("left", (d3.event.pageX+12) + "px")
             .style("top", (d3.event.pageY-10) + "px")
             .style("opacity", 1)
@@ -40,11 +40,13 @@ var g = svg.selectAll(".arc")
         })
         .on("mouseout",function(){div.html(" ").style("display","none");})
         .on("click",function(d){
-        	if(d3.select(this).attr("transform") == null){
+            /*
+            if(d3.select(this).attr("transform") == null){
         	d3.select(this).attr("transform","translate(42,0)");
         	}else{
         		d3.select(this).attr("transform",null);
-        	}
+        	
+            */
         });
         
         

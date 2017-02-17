@@ -1,16 +1,24 @@
 ﻿@model Hack121.Mvc.ViewModels.UniversityModel    
 @{
-    var PricesPerCategory = Model.Transactions.Where(t => !string.IsNullOrEmpty(t.CategoryId)).GroupBy(t => t.CategoryId).ToDictionary(u => u.Key, g => g.Sum(x=>x.Price));    
+    // TODO: auto filtering (not by ID)
+    var PricesPerCategory = Model.Transactions.Where(t => !string.IsNullOrEmpty(t.CategoryId)
+        && !t.CategoryId.Equals("d5255bdb-9af9-4994-aa8c-5624649f868d")
+        && !t.CategoryId.Equals("6416ab00-ac59-4ff6-833b-7e86a49a6f08")).GroupBy(t => t.CategoryId).ToDictionary(u => u.Key, g => g.Sum(x => x.Price));
+    var notMatched = Model.Transactions.Where(t => string.IsNullOrEmpty(t.CategoryId)).Sum(t => t.Price);
+    var pay = Model.Transactions.Where(t => !string.IsNullOrEmpty(t.CategoryId) && t.CategoryId.Equals("6416ab00-ac59-4ff6-833b-7e86a49a6f08")).Sum(t => t.Price);
+    var scolar = Model.Transactions.Where(t => !string.IsNullOrEmpty(t.CategoryId) && t.CategoryId.Equals("d5255bdb-9af9-4994-aa8c-5624649f868d")).Sum(t => t.Price);
+    var data = PricesPerCategory.Select(p => new { category = Model.Categories[p.Key], price = p.Value }).ToArray();
+    var summ = Model.Transactions.Sum(t => t.Price);
 }
 
 <div class="section no-pad-bot" id="index-banner">
         <div class="row">
             <div class="container bordered">
                 <br><br>
-                <h1 class="header orange-text">@Model.ShortName</h1>
+                <a href="/"><h1 class="header orange-text">@Model.ShortName</h1></a>
             </div>
             <div class="container">
-                <h3>Річний бюджет: 150000000 грн</h3>
+                <h3>Річний бюджет: @summ грн</h3>
             </div>
         </div>
         <div class="row">
@@ -28,60 +36,64 @@
                                     Категорія
                                 </td>
                                 <td>
-                                    Відсоток
+                                    Сума
                                 </td>
                                 <td></td>
                             </tr>
                         </thead>
                         <tbody>
-                            @*@foreach(var pair in PricesPerCategory)
+                            @foreach (var pair in data.OrderBy(p => p.price))
                             {
                             <tr>
                                 <td>
-                                    @pair.Key
+                                    @pair.category
                                 </td>
                                 <td>
-                                    @pair.Value
+                                    @pair.price
                                 </td>
                                 <td>
-                                    <a href="categoryDetails.html">Детальніше</a>
+                                    <a href="#" class="disabled" disabled="disabled">>Детальніше</a>
                                 </td>
                             </tr>
-                            }*@
-                            <tr>
-                                <td>
-                                    Газ
-                                </td>
-                                <td>
-                                    44000
-                                </td>
-                                <td>
-                                    <a href="categoryDetails.html">Детальніше</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Зар. плата
-                                </td>
-                                <td>
-                                    33000
-                                </td>
-                                <td>
-                                    <a href="categoryDetails.html">Детальніше</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Ремонтні матеріали
-                                </td>
-                                <td>
-                                    25000
-                                </td>
-                                <td>
-                                    <a href="categoryDetails.html">Детальніше</a>
-                                </td>
-                            </tr>
+                            }
                         </tbody>
+                        <tfoot class="gr">
+                            <tr>
+                                <td>
+                                    Стипендія
+                                </td>
+                                <td>
+                                    @scolar
+                                </td>
+                                <td>
+                                    <a href="#" class="disabled" disabled="disabled">Детальніше</a>
+                                </td>
+                            </tr>
+                            @if (pay != 0) { 
+                                <tr>
+                                    <td>
+                                        Зарплатня
+                                    </td>
+                                    <td>
+                                        @pay
+                                    </td>
+                                    <td>
+                                        <a href="#" class="disabled" disabled="disabled">Детальніше</a>
+                                    </td>
+                                </tr>
+                            }
+                            <tr>
+                                <td>
+                                    "Інше"
+                                </td>
+                                <td>
+                                    @notMatched
+                                </td>
+                                <td>
+                                    <a href="#" class="disabled" disabled="disabled">Детальніше</a>
+                                </td>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>
@@ -91,7 +103,7 @@
 
 <script type="text/javascript">
     window.onload = function () {
-        var data = [{ category: "Газ", price: "44000" }, { category: "Ремонт", price: "25000.5" }, { category: "Зар. плата", price: "33000" }];
+        var data = @data.ToJson() ;
         var pieChart = new PieChart(data, "category", "price");
     };
 

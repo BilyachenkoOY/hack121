@@ -22,6 +22,8 @@ namespace Hack121.Mvc.ViewModels
 
         public virtual string ShortName { get; set; }
 
-        public List<PaymentTransaction> Transactions { get; set; }
+        public IList<PaymentTransaction> Transactions { get; set; }
+
+        public IDictionary<string, string> Categories { get; set; }
     }
 }

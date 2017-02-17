@@ -17,6 +17,24 @@ namespace Hack121.Business.Managers
 
         }
 
+        public Dictionary<string, string> Dictionary()
+        {
+            var key = GetKey("dict");
+            return FromCache(key, () => Provider.List().ToDictionary(c => c.Id, c => c.Title));
+        }
+
+        public override void OnCreate(PaymentCategory obj)
+        {
+            base.OnCreate(obj);
+            RemoveFromCache(GetKey("dict"));
+        }
+
+        public override void OnDelete(string id)
+        {
+            base.OnDelete(id);
+            RemoveFromCache(GetKey("dict"));
+        }
+
         protected override string Name
         {
             get { return "Category"; }

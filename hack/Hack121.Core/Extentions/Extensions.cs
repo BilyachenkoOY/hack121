@@ -71,11 +71,11 @@ namespace System.Web
             return new MvcHtmlString(str);
         }
 
-        public static string ToJson(this object obj)
+        public static MvcHtmlString ToJson(this object obj)
         {
             var settings = new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore, Formatting = Formatting.None };
             var str = JsonConvert.SerializeObject(obj, settings);
-            return str;
+            return new MvcHtmlString(str);
         }
     }
 }

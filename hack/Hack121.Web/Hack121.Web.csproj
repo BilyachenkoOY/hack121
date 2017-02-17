@@ -1210,6 +1210,7 @@
     <Content Include="Views\Shared\_gtm.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\University\Details.cshtml" />
+    <Content Include="Views\University\Category.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
